@@ -37,9 +37,9 @@ export default function HomePage() {
   const { t, lang } = useLang()
 
   // Track page view
-  useEffect(() => {
-    fetch('/api/analytics', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ page: '/' }) })
-  }, [])
+  // useEffect(() => {
+  //   fetch('/api/analytics', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ page: '/' }) })
+  // }, [])
 
   return (
     <div className="bg-cream min-h-screen">

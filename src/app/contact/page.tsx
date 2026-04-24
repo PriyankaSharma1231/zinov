@@ -9,9 +9,9 @@ export default function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [sent, setSent] = useState(false)
 
-  useEffect(() => {
-    fetch('/api/analytics', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ page: '/contact' }) })
-  }, [])
+  // useEffect(() => {
+  //   fetch('/api/analytics', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ page: '/contact' }) })
+  // }, [])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()

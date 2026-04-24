@@ -247,13 +247,13 @@ export default function ShopPage() {
   const [active, setActive] = useState("All");
   const [toast, setToast] = useState("");
 
-  useEffect(() => {
-    fetch("/api/analytics", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ page: "/shop" }),
-    });
-  }, []);
+  // useEffect(() => {
+  //   fetch("/api/analytics", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ page: "/shop" }),
+  //   });
+  // }, []);
 
   const filtered =
     active === "All"

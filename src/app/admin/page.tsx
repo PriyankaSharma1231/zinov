@@ -35,9 +35,9 @@ export default function AdminPage() {
     if (status === 'loading') return
     const role = (session?.user as any)?.role
     if (!session || role !== 'admin') { router.push('/login'); return }
-    fetch('/api/analytics?full=1')
-      .then(r => r.json())
-      .then(data => { setStats(data); setLoading(false) })
+    // fetch('/api/analytics?full=1')
+    //   .then(r => r.json())
+    //   .then(data => { setStats(data); setLoading(false) })
   }, [session, status])
 
   if (loading) return (
