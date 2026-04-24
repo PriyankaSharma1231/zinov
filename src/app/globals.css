@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gold: #b8943f;
+  --gold-light: #d4af6a;
+  --cream: #f5f0e8;
+  --charcoal: #1a1a1a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background-color: #f5f0e8;
+  color: #1a1a1a;
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .font-serif {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Marquee strip */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-inner {
+  animation: marquee 18s linear infinite;
+  white-space: nowrap;
+  display: flex;
+}
+
+/* Gold shimmer button */
+.btn-gold {
+  background: linear-gradient(135deg, #b8943f 0%, #d4af6a 50%, #b8943f 100%);
+  background-size: 200% auto;
+  transition: background-position 0.5s ease, transform 0.2s;
+}
+.btn-gold:hover {
+  background-position: right center;
+  transform: translateY(-1px);
+}
+
+/* Product card hover */
+.product-card {
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.product-card:hover {
+  transform: translateY(-8px);
+}
+.product-card img {
+  transition: transform 0.6s ease;
+}
+.product-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f5f0e8; }
+::-webkit-scrollbar-thumb { background: #b8943f; border-radius: 3px; }
+
+/* Rangoli animation */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.rangoli-spin { animation: spin-slow 20s linear infinite; }
+
+/* Fade up utility */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fadeUp 0.8s ease both;
+}
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
