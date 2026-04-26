@@ -1,21 +1,20 @@
-// prisma/schema.prisma
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./zinov.db"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
+  id        String        @id @default(cuid())
+  email     String        @unique
   name      String?
   password  String
-  role      String   @default("customer")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  role      String        @default("customer")
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
   orders    Order[]
   sessions  UserSession[]
 }
@@ -35,18 +34,18 @@ model PageView {
 }
 
 model Product {
-  id          String   @id @default(cuid())
-  name        String
-  nameHi      String
-  description String
+  id            String      @id @default(cuid())
+  name          String
+  nameHi        String
+  description   String
   descriptionHi String
-  price       Float
-  currency    String   @default("GBP")
-  image       String
-  category    String
-  stock       Int      @default(100)
-  createdAt   DateTime @default(now())
-  orders      OrderItem[]
+  price         Float
+  currency      String      @default("GBP")
+  image         String
+  category      String
+  stock         Int         @default(100)
+  createdAt     DateTime    @default(now())
+  orders        OrderItem[]
 }
 
 model Order {
