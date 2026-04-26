@@ -9,9 +9,9 @@ import { CheckCircle } from 'lucide-react'
 export default function AboutPage() {
   const { t, lang } = useLang()
 
-  // useEffect(() => {
-  //   fetch('/api/analytics', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ page: '/about' }) })
-  // }, [])
+  useEffect(() => {
+    fetch('/api/analytics', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ page: '/about' }) })
+  }, [])
 
   return (
     <div className="bg-cream min-h-screen pt-28">
