@@ -53,7 +53,7 @@ export default function HomePage() {
             src="/products/product_4.png"
             alt="ZINOV Hero"
             fill
-            className="object-cover object-top"
+            className="object-cover object-top pt-[56px] md:pt-[70px]"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-b from-charcoal/40 via-charcoal/20 to-charcoal/80" />
@@ -303,12 +303,12 @@ export default function HomePage() {
         <p className="text-muted mb-8">{t.home.instagramSub}</p>
 
         <a
-          href="https://instagram.com/zinov.official"
+          href="https://www.instagram.com/zin.0v?igsh=dGw2c21oN3ptdTh6&utm_source=qr"
           target="_blank"
           rel="noopener noreferrer"
           className="btn-gold text-white px-8 py-3.5 text-sm tracking-widest uppercase rounded-sm inline-block"
         >
-          @zinov.official
+          @zin.0v
         </a>
       </section>
     </div>

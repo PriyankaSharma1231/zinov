@@ -23,7 +23,7 @@ export const translations = {
       craftTitle: 'Made With Intention',
       craftSub: 'Every ZINOV garment begins as raw fibre in the hands of an Indian artisan. We source directly — linen from Kutch, silk from Varanasi, cotton from Rajasthan.',
       instagramTitle: 'Wear It. Share It.',
-      instagramSub: 'Tag @zinov.official and become part of the story.',
+      instagramSub: 'Tag @zin.0v and become part of the story.',
     },
     shop: {
       title: 'The Collection',
@@ -35,7 +35,7 @@ export const translations = {
     about: {
       title: 'Two Countries. One Vision.',
       sub: 'ZINOV was born from a simple idea — that India\'s extraordinary craft tradition deserves a place in modern London wardrobes.',
-      story: 'Founded by two cousins, one based in Ahmedabad and one in London, ZINOV bridges the gap between heritage craft and contemporary minimalist style.',
+      story: 'Founded by two cousins, one based in Anand and one in Leicester, ZINOV bridges the gap between heritage craft and contemporary minimalist style.',
       values: ['Handcrafted Quality', 'Ethical Sourcing', 'Zero Compromise', 'Direct from Artisan'],
     },
     contact: {
@@ -76,7 +76,7 @@ export const translations = {
       craftTitle: 'इरादे के साथ बनाया गया',
       craftSub: 'हर ZINOV परिधान भारतीय कारीगर के हाथों में कच्चे रेशे के रूप में शुरू होता है। हम सीधे स्रोत करते हैं — कच्छ से लिनन, वाराणसी से रेशम, राजस्थान से कपास।',
       instagramTitle: 'पहनें। शेयर करें।',
-      instagramSub: '@zinov.official टैग करें और कहानी का हिस्सा बनें।',
+      instagramSub: '@zin.0v टैग करें और कहानी का हिस्सा बनें।',
     },
     shop: {
       title: 'द कलेक्शन',

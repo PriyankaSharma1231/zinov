@@ -26,7 +26,7 @@ export default function Footer() {
               className="w-10 h-10 border border-cream/20 rounded-full flex items-center justify-center hover:border-gold hover:text-gold transition-colors">
               <Instagram size={16} />
             </a>
-            <a href="mailto:hello@zinov.com"
+            <a href="mailto:zinovorders@gmail.com"
               className="w-10 h-10 border border-cream/20 rounded-full flex items-center justify-center hover:border-gold hover:text-gold transition-colors">
               <Mail size={16} />
             </a>
@@ -45,10 +45,10 @@ export default function Footer() {
         <div>
           <h4 className="text-xs uppercase tracking-widest text-gold mb-5">Info</h4>
           <ul className="space-y-3 text-sm text-cream/50">
-            <li>🇬🇧 London, UK</li>
-            <li>🇮🇳 Ahmedabad, India</li>
-            <li>hello@zinov.com</li>
-            <li className="pt-2 text-xs">Free shipping to UK over £150</li>
+            <li>🇬🇧 Leicester, UK</li>
+            <li>🇮🇳 Anand, India</li>
+            <li>zinovorders@gmail.com</li>
+            {/* <li className="pt-2 text-xs">Free shipping to UK over £150</li> */}
           </ul>
         </div>
       </div>

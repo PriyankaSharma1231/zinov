@@ -24,8 +24,8 @@ export default function Navbar() {
   const role = (session?.user as any)?.role
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-cream/95 backdrop-blur-sm shadow-sm py-3' : 'bg-transparent py-5'}`}>
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+   <nav className="fixed max-w-7xl top-0 left-0 right-0 z-50 bg-cream/95 backdrop-blur-sm shadow-sm py-3 md:h-[70px] flex w-100 items-center">
+      <div className=" mx-auto px-6 flex items-center justify-between w-100">
 
         {/* Logo */}
         <Link href="/" className="font-serif text-2xl font-bold tracking-widest text-charcoal">ZINOV</Link>
