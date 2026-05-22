@@ -9,7 +9,7 @@ import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 
 export const metadata: Metadata = {
-  title: 'ZINOV — Crafted in India. Worn in London.',
+  title: 'ZINOV — Crafted in India.',
   description: 'Minimalist essentials rooted in Indian craft tradition. Handmade, ethical, and timeless.',
 }
 

@@ -33,7 +33,7 @@ export default function AboutPage() {
       {/* Story */}
       <section className="bg-charcoal text-cream py-24">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-          <div className="relative">
+          {/* <div className="relative">
             <div className="aspect-[4/5] relative rounded-sm overflow-hidden">
               <Image
                 src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=700&q=80"
@@ -43,14 +43,14 @@ export default function AboutPage() {
               />
             </div>
             <div className="absolute -bottom-6 -right-6 w-32 h-32 border border-gold/30 rounded-sm hidden md:block" />
-          </div>
+          </div> */}
           <div>
             <p className="text-gold text-xs tracking-[0.3em] uppercase mb-4">
               Our Story
             </p>
-            <h2 className="font-serif text-3xl md:text-4xl font-bold mb-6 leading-tight">
+            {/* <h2 className="font-serif text-3xl md:text-4xl font-bold mb-6 leading-tight">
               From Anand to London
-            </h2>
+            </h2> */}
             <p className="text-cream/70 leading-relaxed mb-6">
               {t.about.story}
             </p>
@@ -95,11 +95,11 @@ export default function AboutPage() {
               title: "Craft",
               desc: "Each garment is made to order or in small runs. Nothing sits in a warehouse for years.",
             },
-            {
-              step: "04",
-              title: "Ship",
-              desc: "We export directly from India to our UK base in Leicester, cutting out all middlemen to keep prices honest.",
-            },
+            // {
+            //   step: "04",
+            //   title: "Ship",
+            //   desc: "We export directly from India to our UK base in Leicester, cutting out all middlemen to keep prices honest.",
+            // },
           ].map((item, i) => (
             <div
               key={item.step}
@@ -125,51 +125,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team */}
-      <section className="bg-sand py-20">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="font-serif text-3xl text-charcoal mb-4">
-            The Founders
-          </h2>
-          <p className="text-muted mb-14 max-w-md mx-auto">
-            Two cousins, two cities, one mission.
-          </p>
-          <div className="grid md:grid-cols-2 gap-10 max-w-2xl mx-auto">
-            {[
-              {
-                name: "India Studio",
-                city: "Anand, Gujarat",
-                role: "Design & Sourcing",
-                img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80",
-              },
-              {
-                name: "UK Operations",
-                city: "London, England",
-                role: "Sales & Distribution",
-                img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80",
-              },
-            ].map((person) => (
-              <div key={person.name} className="text-center">
-                <div className="w-28 h-28 rounded-full overflow-hidden mx-auto mb-4 border-4 border-gold/20">
-                  <Image
-                    src={person.img}
-                    alt={person.name}
-                    width={112}
-                    height={112}
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-                <h3 className="font-serif text-xl text-charcoal">
-                  {person.name}
-                </h3>
-                <p className="text-gold text-xs tracking-wider uppercase mt-1">
-                  {person.role}
-                </p>
-                <p className="text-muted text-sm mt-1">{person.city}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+   
     </div>
   );
 }

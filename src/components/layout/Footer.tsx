@@ -11,7 +11,7 @@ export default function Footer() {
       {/* Decorative rangoli strip */}
       <div className="border-t border-gold/30 py-3 overflow-hidden">
         <div className="marquee-inner">
-          {Array(12).fill('✦  ZINOV  ✦  INDIA TO LONDON  ✦  HANDCRAFTED  ✦  ETHICAL  ✦').map((t, i) => (
+          {Array(12).fill('✦  ZINOV  ✦  INDIA ✦  HANDCRAFTED  ✦  ETHICAL  ✦').map((t, i) => (
             <span key={i} className="text-xs tracking-widest text-gold/50 mx-4">{t}</span>
           ))}
         </div>
@@ -45,7 +45,7 @@ export default function Footer() {
         <div>
           <h4 className="text-xs uppercase tracking-widest text-gold mb-5">Info</h4>
           <ul className="space-y-3 text-sm text-cream/50">
-            <li>🇬🇧 Leicester, UK</li>
+            {/* <li>🇬🇧 Leicester, UK</li> */}
             <li>🇮🇳 Anand, India</li>
             <li>zinovorders@gmail.com</li>
             {/* <li className="pt-2 text-xs">Free shipping to UK over £150</li> */}

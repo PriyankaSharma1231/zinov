@@ -11,7 +11,7 @@ export const translations = {
       admin: 'Dashboard',
     },
     hero: {
-      tagline: 'Crafted in India. Worn in London.',
+      tagline: 'Crafted in India.',
       sub: 'Minimalist essentials rooted in Indian heritage',
       cta: 'Explore Collection',
       cta2: 'Our Story',
@@ -33,9 +33,9 @@ export const translations = {
       viewDetails: 'View Details',
     },
     about: {
-      title: 'Two Countries. One Vision.',
-      sub: 'ZINOV was born from a simple idea — that India\'s extraordinary craft tradition deserves a place in modern London wardrobes.',
-      story: 'Founded by two cousins, one based in Anand and one in Leicester, ZINOV bridges the gap between heritage craft and contemporary minimalist style.',
+      title: 'One Vision.',
+      sub: 'ZINOV was born from a simple idea — that India\'s extraordinary craft tradition deserves a place in modern wardrobes.',
+      story: 'ZINOV bridges the gap between heritage craft and contemporary minimalist style.',
       values: ['Handcrafted Quality', 'Ethical Sourcing', 'Zero Compromise', 'Direct from Artisan'],
     },
     contact: {
@@ -45,11 +45,11 @@ export const translations = {
       emailPlaceholder: 'Your Email',
       messagePlaceholder: 'Your Message',
       send: 'Send Message',
-      ukTitle: 'UK Office',
+      // ukTitle: 'UK Office',
       inTitle: 'India Studio',
     },
     footer: {
-      tagline: 'Crafted in India. Worn in London.',
+      tagline: 'Crafted in India.',
       rights: '© 2024 ZINOV. All rights reserved.',
     },
   },
@@ -64,7 +64,7 @@ export const translations = {
       admin: 'डैशबोर्ड',
     },
     hero: {
-      tagline: 'भारत में बनाया। लंदन में पहना।',
+      tagline: 'भारत में बनाया।',
       sub: 'भारतीय विरासत में निहित न्यूनतम आवश्यकताएं',
       cta: 'कलेक्शन देखें',
       cta2: 'हमारी कहानी',
@@ -87,8 +87,8 @@ export const translations = {
     },
     about: {
       title: 'दो देश। एक दृष्टि।',
-      sub: 'ZINOV एक सरल विचार से जन्मा — कि भारत की असाधारण शिल्प परंपरा आधुनिक लंदन की अलमारियों में जगह की हकदार है।',
-      story: 'दो चचेरे भाइयों द्वारा स्थापित, एक अहमदाबाद और एक लंदन में, ZINOV विरासत शिल्प और समकालीन न्यूनतम शैली के बीच की खाई को पाटता है।',
+      sub: 'ZINOV एक सरल विचार से जन्मा — कि भारत की असाधारण शिल्प परंपरा आधुनिक जगह की हकदार है।',
+      story: 'ZINOV विरासत शिल्प और समकालीन न्यूनतम शैली के बीच की खाई को पाटता है।',
       values: ['हस्तनिर्मित गुणवत्ता', 'नैतिक सोर्सिंग', 'शून्य समझौता', 'कारीगर से सीधे'],
     },
     contact: {
@@ -98,7 +98,7 @@ export const translations = {
       emailPlaceholder: 'आपका ईमेल',
       messagePlaceholder: 'आपका संदेश',
       send: 'संदेश भेजें',
-      ukTitle: 'UK कार्यालय',
+      // ukTitle: 'UK कार्यालय',
       inTitle: 'भारत स्टूडियो',
     },
     footer: {

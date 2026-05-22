@@ -9,17 +9,17 @@ import RangoliDecor from "@/components/ui/RangoliDecor";
 const featured = [
   {
     id: "8",
-    name: "Blush Tulip Sleeveless Coord",
-    nameHi: "ब्लश ट्यूलिप स्लीवलेस को-ऑर्ड",
-    price: 89,
+    name: "Mustard Kutchi Embroidered Kurta Set",
+    nameHi: "मस्टर्ड कच्छी एम्ब्रॉयडर्ड कुर्ता सेट",
+    price: 1699,
     image: "/products/product_8.png",
     category: "Coord Sets",
   },
   {
     id: "9",
-    name: "Mustard Kutchi Embroidered Kurta Set",
-    nameHi: "मस्टर्ड कच्छी एम्ब्रॉयडर्ड कुर्ता सेट",
-    price: 115,
+    name: "Blush Tulip Sleeveless Coord ",
+    nameHi: "ब्लश ट्यूलिप स्लीवलेस को-ऑर्ड",
+    price: 1499,
     image: "/products/product_9.png",
     category: "Kurta Sets",
   },
@@ -27,7 +27,7 @@ const featured = [
     id: "1",
     name: "Ivory Black Abstract Wave Coord",
     nameHi: "आइवरी ब्लैक एब्स्ट्रैक्ट वेव को-ऑर्ड",
-    price: 108,
+    price: 1999,
     image: "/products/product_1.png",
     category: "Coord Sets",
   },
@@ -102,7 +102,7 @@ export default function HomePage() {
         <div className="marquee-inner">
           {Array(10)
             .fill(
-              "✦  HANDCRAFTED IN INDIA  ✦  WORN IN LONDON  ✦  COTTON FLAX  ✦  ETHICAL FASHION  ✦  ARTISAN MADE  ✦",
+              "✦  HANDCRAFTED IN INDIA ✦  COTTON FLAX  ✦  ETHICAL FASHION  ✦  ARTISAN MADE  ✦",
             )
             .map((item, i) => (
               <span
@@ -159,7 +159,7 @@ export default function HomePage() {
                 <h3 className="font-serif text-lg text-charcoal">
                   {lang === "hi" ? product.nameHi : product.name}
                 </h3>
-                <p className="text-charcoal font-medium">£{product.price}</p>
+                <p className="text-charcoal font-medium">₹{product.price}</p>
               </div>
             </Link>
           ))}
@@ -192,25 +192,25 @@ export default function HomePage() {
                 id: "5",
                 file: "product_5.png",
                 name: "Teal Ajrakh 3-Piece",
-                price: 129,
+                price: 1999,
               },
               {
                 id: "6",
                 file: "product_6.png",
                 name: "Black Paisley Coord",
-                price: 105,
+                price: 2100,
               },
               {
                 id: "7",
                 file: "product_7.png",
                 name: "Teal Embroidered Set",
-                price: 135,
+                price: 1999,
               },
               {
                 id: "10",
                 file: "product_10.png",
                 name: "Rust Appliqué Set",
-                price: 112,
+                price: 1999,
               },
             ].map((p) => (
               <Link href={`/shop/${p.id}`} key={p.id} className="group block">
@@ -224,7 +224,7 @@ export default function HomePage() {
                 </div>
                 <div className="mt-3">
                   <h3 className="font-serif text-sm text-charcoal">{p.name}</h3>
-                  <p className="text-sm text-gold mt-1">£{p.price}</p>
+                  <p className="text-sm text-gold mt-1">₹{p.price}</p>
                 </div>
               </Link>
             ))}
@@ -280,7 +280,7 @@ export default function HomePage() {
             { num: "10", label: "Designs" },
             { num: "5", label: "Sizes Available" },
             { num: "100%", label: "Cotton Flax" },
-            { num: "🇬🇧", label: "UK Delivered" },
+            // { num: "🇬🇧", label: "UK Delivered" },
           ].map((stat) => (
             <div key={stat.label}>
               <p className="font-serif text-4xl font-bold text-gold">

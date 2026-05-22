@@ -73,7 +73,7 @@ export default function CartPage() {
                         <Plus size={12} />
                       </button>
                     </div>
-                    <p className="font-medium text-charcoal">£{(item.price * item.qty).toFixed(2)}</p>
+                    <p className="font-medium text-charcoal">₹{(item.price * item.qty).toFixed(2)}</p>
                   </div>
                 </div>
               </div>
@@ -92,18 +92,18 @@ export default function CartPage() {
               <div className="flex flex-col gap-3 text-sm">
                 <div className="flex justify-between text-charcoal/70">
                   <span>Subtotal</span>
-                  <span>£{subtotal.toFixed(2)}</span>
+                  <span>₹{subtotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between text-charcoal/70">
                   <span>Shipping</span>
-                  <span>{shipping === 0 ? <span className="text-gold">Free</span> : `£${shipping.toFixed(2)}`}</span>
+                  <span>{shipping === 0 ? <span className="text-gold">Free</span> : `₹${shipping.toFixed(2)}`}</span>
                 </div>
                 {shipping > 0 && (
-                  <p className="text-xs text-muted">Free shipping on orders over £150</p>
+                  <p className="text-xs text-muted">Free shipping on orders over ₹150</p>
                 )}
                 <div className="border-t border-sand pt-3 flex justify-between font-medium text-charcoal text-base">
                   <span>Total</span>
-                  <span>£{total.toFixed(2)}</span>
+                  <span>₹{total.toFixed(2)}</span>
                 </div>
               </div>
 

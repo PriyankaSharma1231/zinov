@@ -42,7 +42,7 @@ async function main() {
     {
       name: 'The Still Kurta',
       nameHi: 'द स्टिल कुर्ता',
-      description: 'A reimagined kurta for modern London. Minimal cuts, heritage cotton, zero compromise.',
+      description: 'Minimal cuts, heritage cotton, zero compromise.',
       descriptionHi: 'आधुनिक लंदन के लिए एक पुनर्कल्पित कुर्ता। न्यूनतम कट, विरासत कॉटन, शून्य समझौता।',
       price: 95,
       image: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=600&q=80',
@@ -95,7 +95,7 @@ async function main() {
     await prisma.pageView.create({
       data: {
         page: pages[Math.floor(Math.random() * pages.length)],
-        country: ['UK', 'India', 'USA', 'Germany', 'Canada'][Math.floor(Math.random() * 5)],
+        country: ['India'][Math.floor(Math.random() * 5)],
         createdAt: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000),
       },
     })

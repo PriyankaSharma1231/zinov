@@ -14,10 +14,10 @@ const allProducts = [
     name: "Ivory Black Abstract Wave Coord",
     nameHi: "आइवरी ब्लैक एब्स्ट्रैक्ट वेव को-ऑर्ड",
     category: "Coord Sets",
-    price: 30,
+    price: 1999,
     vibe: "Statement · Urban · Fashion-Forward",
     description:
-      "A bold and contemporary ivory cotton flax coord featuring a large-scale abstract wave and geometric shape print in black and graphite. The maxi-length mandarin-collar shirt with full front button opening and wide-leg matching trousers give an editorial, fashion-forward feel — designed in India, made for London streets.",
+      "A bold and contemporary ivory cotton flax coord featuring a large-scale abstract wave and geometric shape print in black and graphite. The maxi-length mandarin-collar shirt with full front button opening and wide-leg matching trousers give an editorial, fashion-forward feel — designed in India",
     descriptionHi:
       "आइवरी कॉटन फ्लैक्स को-ऑर्ड में लार्ज-स्केल एब्स्ट्रैक्ट वेव और जियोमेट्रिक शेप प्रिंट। मैक्सी-लेंथ मंदारिन कॉलर शर्ट और वाइड-लेग ट्राउज़र्स के साथ।",
     details:
@@ -37,7 +37,7 @@ const allProducts = [
     name: "Charcoal Terracotta Floral 3-Piece Suit",
     nameHi: "चारकोल टेराकोटा फ्लोरल 3-पीस सूट",
     category: "3-Piece Suits",
-    price: 34,
+    price: 2100,
     vibe: "Office · Festive · Traditional",
     description:
       "A sophisticated dark charcoal cotton flax suit with an all-over terracotta and blush floral sprig print. The decorative Kutchi-style yoke panel with red tassels anchors the look beautifully, while the coordinating striped dupatta with a geometric diamond border adds a layer of traditional craftsmanship. A complete 3-piece set of quiet luxury.",
@@ -60,7 +60,7 @@ const allProducts = [
     name: "Amber Leaf Print Button Coord",
     nameHi: "एम्बर लीफ प्रिंट बटन को-ऑर्ड",
     category: "Coord Sets",
-    price: 30,
+    price: 1999,
     vibe: "Casual · College · Artistic",
     description:
       "A warm amber and ivory cotton flax coord with an abstract botanical leaf and foliage print that feels both artistic and deeply wearable. The longline mandarin-collar shirt with full front button opening and wide-leg palazzo trousers make this an effortless all-day outfit. A comfortable, confident choice for college, work or weekends.",
@@ -83,7 +83,7 @@ const allProducts = [
     name: "Ivory Pink Floral 3-Piece Suit",
     nameHi: "आइवरी पिंक फ्लोरल 3-पीस सूट",
     category: "3-Piece Suits",
-    price: 34,
+    price: 2100,
     vibe: "Festive · Garden Party · Traditional",
     description:
       "A romantic ivory cotton flax suit with a delicate climbing rose and floral vine print in soft pinks and sage green. The V-neck with lace trim adds a timeless feminine grace, while the blush pink striped dupatta with an ornate Mughal-motif border makes this a complete celebration outfit. The kind of suit you wear to every occasion and never tire of.",
@@ -106,7 +106,7 @@ const allProducts = [
     name: "Teal Ajrakh Geometric 3-Piece Suit",
     nameHi: "टील अजरख जियोमेट्रिक 3-पीस सूट",
     category: "3-Piece Suits",
-    price: 34,
+    price: 1999,
     vibe: "Heritage · Festive · Collector's Piece",
     description:
       "A richly detailed teal cotton flax suit with Ajrakh-inspired geometric block print in deep red and ochre — one of India's oldest textile traditions. The decorative yoke panel with red tassel draws the eye inward, while the patchwork-style Ajrakh dupatta is a collector's piece in itself. Centuries of Kutch craft heritage, worn today.",
@@ -129,7 +129,7 @@ const allProducts = [
     name: "Black Paisley Block Print Coord",
     nameHi: "ब्लैक पेस्ले ब्लॉक प्रिंट को-ऑर्ड",
     category: "Coord Sets",
-    price: 30,
+    price: 2100,
     vibe: "Office · Evening · Statement",
     description:
       "A bold and graphic black cotton flax coord with striking cream Mughal-inspired paisley block print arranged in a large diamond grid. The longline mandarin collar kurta and wide-leg palazzo trousers create a powerful, editorial silhouette — minimal effort, maximum presence. A ZINOV signature piece.",
@@ -152,7 +152,7 @@ const allProducts = [
     name: "Teal Floral Embroidered Kurta Set",
     nameHi: "टील फ्लोरल एम्ब्रॉयडर्ड कुर्ता सेट",
     category: "Kurta Sets",
-    price: 30,
+    price: 1999,
     vibe: "Office · Premium · Artisan",
     description:
       "A stunning teal blue cotton flax kurta with flowing cream thread floral embroidery across the yoke, hemline border and sleeves. The distinctive split-cuff sleeves with pearl buttons and tassel ties are a design detail you will not find on the high street. Paired with solid teal wide-leg trousers — a premium set that takes 2 full days to hand-embroider.",
@@ -175,10 +175,10 @@ const allProducts = [
     name: "Blush Tulip Sleeveless Coord",
     nameHi: "ब्लश ट्यूलिप स्लीवलेस को-ऑर्ड",
     category: "Coord Sets",
-    price: 29,
+    price: 1499,
     vibe: "Summer · Casual · Garden",
     description:
-      "A breezy blush pink cotton flax coord covered in a watercolour tulip, peach bloom and leaf print. The sleeveless notched-collar shirt with patch pockets and the relaxed straight-leg trousers make this the easiest, most joyful outfit you will reach for all summer — whether it's a picnic in the park or a stroll through London.",
+      "A breezy blush pink cotton flax coord covered in a watercolour tulip, peach bloom and leaf print. The sleeveless notched-collar shirt with patch pockets and the relaxed straight-leg trousers make this the easiest, most joyful outfit you will reach for all summer — whether it's a picnic in the park.",
     descriptionHi:
       "ब्लश पिंक कॉटन फ्लैक्स को-ऑर्ड में वॉटरकलर ट्यूलिप और पीच ब्लूम प्रिंट। स्लीवलेस नॉच्ड कॉलर शर्ट और स्ट्रेट-लेग ट्राउज़र्स के साथ।",
     details:
@@ -198,7 +198,7 @@ const allProducts = [
     name: "Mustard Kutchi Embroidered Kurta Set",
     nameHi: "मस्टर्ड कच्छी एम्ब्रॉयडर्ड कुर्ता सेट",
     category: "Kurta Sets",
-    price: 30,
+    price: 1699,
     vibe: "Office · Festive · Heritage",
     description:
       "Rich deep mustard cotton flax with three hand-stitched Kutchi mirror-work medallions placed beautifully across the kurta front. The V-neck with embroidered geometric trim, tassel pendant and three-quarter embroidered cuffs make this a statement piece that transitions effortlessly from the boardroom to a celebration dinner.",
@@ -221,7 +221,7 @@ const allProducts = [
     name: "Rust Geometric Appliqué Kurta Set",
     nameHi: "रस्ट जियोमेट्रिक अप्लिक कुर्ता सेट",
     category: "Kurta Sets",
-    price: 30,
+    price: 1999,
     vibe: "Office · Everyday · Artisan",
     description:
       "A warm terracotta rust cotton flax kurta with three placed geometric appliqué medallions featuring bandhani-inspired dot work and cream thread stitching. The V-neck with embroidered trim and tassel pendant, combined with matching rust wide-leg trousers, creates a grounded, confident look that works as well at the office as it does on a rooftop at golden hour.",
@@ -354,11 +354,11 @@ export default function ProductDetailPage() {
             {/* Price */}
             <div className="flex items-baseline gap-3 mb-5">
               <span className="text-3xl font-medium text-charcoal">
-                £{product.price.toFixed(2)}
+                ₹{product.price.toFixed(2)}
               </span>
-              <span className="text-xs text-muted">
+              {/* <span className="text-xs text-muted">
                 incl. VAT · Free UK shipping over £150
-              </span>
+              </span> */}
             </div>
 
             <div className="h-px bg-sand mb-6" />
@@ -487,10 +487,9 @@ export default function ProductDetailPage() {
             {/* Assurances */}
             <div className="space-y-2 mb-5">
               {[
-                "Free UK returns within 30 days",
+                "Free returns within 30 days",
                 "100% Cotton Flax · Ethically made in India",
-                "Free UK shipping on orders over £150",
-                "Delivered to UK in 5–8 working days",
+                "Delivered in 3–5 working days",
               ].map((item) => (
                 <p
                   key={item}
@@ -503,9 +502,8 @@ export default function ProductDetailPage() {
 
             {/* Info strip */}
             <div className="bg-sand rounded-sm p-4 text-xs text-muted leading-relaxed">
-              🇬🇧 UK Delivery 5–8 days &nbsp;·&nbsp; 🇮🇳 Handmade in India
-              &nbsp;·&nbsp; 📦 Free returns 30 days &nbsp;·&nbsp; 🌿 100% Cotton
-              Flax
+              🇮🇳 Handmade in India &nbsp;·&nbsp; 📦 Free returns 30 days
+              &nbsp;·&nbsp; 🌿 100% Cotton Flax
             </div>
           </div>
         </div>
@@ -535,7 +533,7 @@ export default function ProductDetailPage() {
                       {p.name}
                     </h3>
                     <p className="text-sm text-charcoal/70 mt-1">
-                      £{p.price.toFixed(2)}
+                      ₹{p.price.toFixed(2)}
                     </p>
                   </div>
                 </Link>

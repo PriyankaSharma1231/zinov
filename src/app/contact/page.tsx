@@ -131,7 +131,7 @@ export default function ContactPage() {
 
           {/* Info */}
           <div className="space-y-10">
-            <div>
+            {/* <div>
               <h3 className="font-serif text-xl text-charcoal mb-4 flex items-center gap-2">
                 <MapPin size={18} className="text-gold" /> {t.contact.ukTitle}
               </h3>
@@ -140,9 +140,9 @@ export default function ContactPage() {
                 <br />
                 zinovorders@gmail.com
                 <br />
-                {/* Mon–Fri, 9am–6pm GMT */}
+              
               </p>
-            </div>
+            </div> */}
 
             <div className="w-full h-px bg-charcoal/10" />
 
@@ -184,12 +184,12 @@ export default function ContactPage() {
                 Shipping Info
               </p>
               <ul className="space-y-2 text-sm text-cream/70">
-                <li>🇬🇧 UK — 3–5 business days</li>
-                <li>🇮🇳 India — 5–7 business days</li>
-                <li>🌍 International — 7–14 days</li>
-                <li className="text-cream/50 text-xs pt-2">
+                {/* <li>🇬🇧 UK — 3–5 business days</li> */}
+                <li>🇮🇳 India — 3–5 business days</li>
+                {/* <li>🌍 International — 7–14 days</li> */}
+                {/* <li className="text-cream/50 text-xs pt-2">
                   Free shipping on UK orders over £150
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>
