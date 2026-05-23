@@ -84,7 +84,7 @@ export default function CheckoutPage() {
 
   const subtotalINR = subtotal;
   const shipping = subtotalINR >= 999 ? 0 : 99;
-  const discount = promoApplied ? Math.round(subtotalINR * 0.3) : 0;
+  const discount = promoApplied ? Math.round(subtotalINR * 0.5) : 0;
   const total = subtotalINR - discount + shipping;
 
   // ── Remove item handler ──
@@ -160,6 +160,7 @@ export default function CheckoutPage() {
         address: `${form.address}, ${form.city}, ${form.state} - ${form.pincode}`,
         total: total,
         paymentId: "PENDING",
+        items: cart,
       }),
     });
 
@@ -228,6 +229,10 @@ export default function CheckoutPage() {
             address: `${form.address}, ${form.city}, ${form.state} - ${form.pincode}`,
             total: total,
             paymentId: response.razorpay_payment_id,
+            items: cart, // ✅ add this
+            subtotal: subtotalINR, // ✅ add this
+            discount: discount, // ✅ add this
+            shipping: shipping,
           }),
         });
         setPaySuccess(true);
@@ -255,7 +260,7 @@ export default function CheckoutPage() {
 
   const applyPromoCode = () => {
     const code = promoCode.trim().toUpperCase();
-    if (code === "ZINOV30") {
+    if (code === "ZINOV50") {
       setPromoApplied(true);
       setPromoError("");
     } else {
@@ -481,7 +486,7 @@ export default function CheckoutPage() {
               </div>
               {promoApplied && (
                 <p className="text-green-600 text-xs mt-2">
-                  🎉 Promo code applied! You received 30% OFF.
+                  🎉 Promo code applied! You received 50% OFF.
                 </p>
               )}
               {promoError && (
@@ -585,7 +590,7 @@ export default function CheckoutPage() {
                 )}
                 {promoApplied && (
                   <div className="flex justify-between text-green-600 font-medium">
-                    <span>Promo Discount (30%)</span>
+                    <span>Promo Discount (50%)</span>
                     <span>-₹{discount.toLocaleString("en-IN")}</span>
                   </div>
                 )}

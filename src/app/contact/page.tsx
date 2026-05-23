@@ -11,7 +11,6 @@ export default function ContactPage() {
 
   // console.log("EMAIL_PASS:", env.local.EMAIL_PASS);
 
-
   useEffect(() => {
     fetch("/api/analytics", {
       method: "POST",
@@ -186,6 +185,7 @@ export default function ContactPage() {
               <ul className="space-y-2 text-sm text-cream/70">
                 {/* <li>🇬🇧 UK — 3–5 business days</li> */}
                 <li>🇮🇳 India — 3–5 business days</li>
+                  <li>+91 9737018077</li>
                 {/* <li>🌍 International — 7–14 days</li> */}
                 {/* <li className="text-cream/50 text-xs pt-2">
                   Free shipping on UK orders over £150
