@@ -59,13 +59,8 @@ function Field({
 }
 
 export default function CheckoutPage() {
-  // NOTE: Make sure your cart context exports removeFromCart.
-  // If it's named differently (e.g. removeItem), update the line below.
   const { cart, subtotal, clearCart, removeFromCart } = useCart();
   const router = useRouter();
-  const [promoCode, setPromoCode] = useState("");
-  const [promoApplied, setPromoApplied] = useState(false);
-  const [promoError, setPromoError] = useState("");
   const [removingId, setRemovingId] = useState<string | null>(null);
 
   const [form, setForm] = useState<FormData>({
@@ -84,14 +79,12 @@ export default function CheckoutPage() {
 
   const subtotalINR = subtotal;
   const shipping = subtotalINR >= 999 ? 0 : 99;
-  const discount = promoApplied ? Math.round(subtotalINR * 0.5) : 0;
-  const total = subtotalINR - discount + shipping;
+  const total = subtotalINR + shipping;
 
   // ── Remove item handler ──
   const handleRemoveItem = (id: string, size: string) => {
     const key = `${id}-${size}`;
     setRemovingId(key);
-    // Small delay for animation, then remove
     setTimeout(() => {
       removeFromCart(id, size);
       setRemovingId(null);
@@ -229,9 +222,8 @@ export default function CheckoutPage() {
             address: `${form.address}, ${form.city}, ${form.state} - ${form.pincode}`,
             total: total,
             paymentId: response.razorpay_payment_id,
-            items: cart, // ✅ add this
-            subtotal: subtotalINR, // ✅ add this
-            discount: discount, // ✅ add this
+            items: cart,
+            subtotal: subtotalINR,
             shipping: shipping,
           }),
         });
@@ -256,17 +248,6 @@ export default function CheckoutPage() {
   const handleChange = (name: keyof FormData, val: string) => {
     setForm((prev) => ({ ...prev, [name]: val }));
     setErrors((prev) => ({ ...prev, [name]: "" }));
-  };
-
-  const applyPromoCode = () => {
-    const code = promoCode.trim().toUpperCase();
-    if (code === "ZINOV50") {
-      setPromoApplied(true);
-      setPromoError("");
-    } else {
-      setPromoApplied(false);
-      setPromoError("Invalid promo code");
-    }
   };
 
   return (
@@ -459,41 +440,6 @@ export default function CheckoutPage() {
               Your Order
             </h2>
 
-            {/* Promo Code */}
-            <div className="mb-6 border border-sand rounded-sm p-4 bg-sand/20">
-              <p className="text-xs uppercase tracking-widest text-charcoal/60 mb-3">
-                Promo Code
-              </p>
-              <div className="flex gap-2">
-                <input
-                  type="text"
-                  value={promoCode}
-                  onChange={(e) => {
-                    setPromoCode(e.target.value);
-                    setPromoApplied(false);
-                    setPromoError("");
-                  }}
-                  placeholder="Enter coupon code"
-                  className="flex-1 border border-charcoal/20 rounded-sm px-4 py-2 text-sm bg-cream outline-none focus:border-gold"
-                />
-                <button
-                  type="button"
-                  onClick={applyPromoCode}
-                  className="btn-gold px-4 py-2 text-xs uppercase tracking-widest text-white rounded-sm"
-                >
-                  Apply
-                </button>
-              </div>
-              {promoApplied && (
-                <p className="text-green-600 text-xs mt-2">
-                  🎉 Promo code applied! You received 50% OFF.
-                </p>
-              )}
-              {promoError && (
-                <p className="text-red-500 text-xs mt-2">{promoError}</p>
-              )}
-            </div>
-
             {/* Cart Items */}
             <div className="flex flex-col gap-3 mb-6">
               {cart.map((item) => {
@@ -587,12 +533,6 @@ export default function CheckoutPage() {
                     Add ₹{(999 - subtotalINR).toLocaleString("en-IN")} more for
                     free shipping
                   </p>
-                )}
-                {promoApplied && (
-                  <div className="flex justify-between text-green-600 font-medium">
-                    <span>Promo Discount (50%)</span>
-                    <span>-₹{discount.toLocaleString("en-IN")}</span>
-                  </div>
                 )}
                 <div className="border-t border-sand pt-2.5 mt-1 flex justify-between font-medium text-charcoal text-base">
                   <span className="font-serif">Total</span>

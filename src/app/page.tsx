@@ -9,17 +9,17 @@ import RangoliDecor from "@/components/ui/RangoliDecor";
 const featured = [
   {
     id: "8",
-    name: "Mustard Kutchi Embroidered Kurta Set",
-    nameHi: "मस्टर्ड कच्छी एम्ब्रॉयडर्ड कुर्ता सेट",
-    price: 1699,
-    image: "/products/product_8.png",
+    name: "Rust Geometric Appliqué Kurta Set",
+    nameHi: "रस्ट जियोमेट्रिक अप्लिक कुर्ता सेट",
+    price: 1998,
+    image: "/products/product_8.jpeg",
     category: "Coord Sets",
   },
   {
     id: "9",
     name: "Blush Tulip Sleeveless Coord ",
     nameHi: "ब्लश ट्यूलिप स्लीवलेस को-ऑर्ड",
-    price: 1499,
+    price: 1598,
     image: "/products/product_9.png",
     category: "Kurta Sets",
   },
@@ -27,7 +27,7 @@ const featured = [
     id: "1",
     name: "Ivory Black Abstract Wave Coord",
     nameHi: "आइवरी ब्लैक एब्स्ट्रैक्ट वेव को-ऑर्ड",
-    price: 1999,
+    price: 1998,
     image: "/products/product_1.png",
     category: "Coord Sets",
   },
@@ -143,6 +143,11 @@ export default function HomePage() {
                   fill
                   className="object-cover object-top"
                 />
+                <div className="absolute top-3 right-3 z-10">
+                  <span className="bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                    50% OFF
+                  </span>
+                </div>
                 <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/20 transition-colors duration-300" />
                 <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                   <div className="block w-full bg-cream text-charcoal text-xs uppercase tracking-widest py-3 text-center rounded-sm">
@@ -155,11 +160,13 @@ export default function HomePage() {
                   </span>
                 </div>
               </div>
-              <div className="mt-4 flex justify-between items-start">
-                <h3 className="font-serif text-lg text-charcoal">
-                  {lang === "hi" ? product.nameHi : product.name}
-                </h3>
-                <p className="text-charcoal font-medium">₹{product.price}</p>
+              <div className="text-right">
+                <p className="text-gray-400 line-through text-sm">
+                  ₹{product.price}
+                </p>
+                <p className="text-gold font-bold text-lg">
+                  ₹{Math.round(product.price * 0.5)}
+                </p>
               </div>
             </Link>
           ))}
@@ -174,7 +181,26 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
-
+      <div className="bg-gold py-5 px-6">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-3 md:gap-8 text-center">
+          <span className="font-serif text-3xl md:text-4xl font-bold text-white tracking-wide">
+            🎉 50% OFF
+          </span>
+          <span className="hidden md:block w-px h-8 bg-white/30" />
+          <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
+            {/* <span className="text-white text-sm md:text-base tracking-widest uppercase font-medium">
+              Use coupon code at checkout
+            </span>
+            <span className="bg-white text-gold font-bold text-xl md:text-2xl px-5 py-1.5 rounded-sm tracking-[0.2em] border-2 border-white/30">
+              ZINOV50
+            </span> */}
+          </div>
+          <span className="hidden md:block w-px h-8 bg-white/30" />
+          <span className="text-white/80 text-xs tracking-widest uppercase">
+            Limited Time Offer
+          </span>
+        </div>
+      </div>
       {/* NEW ARRIVALS GRID - shows 4 more products */}
       <section className="bg-sand py-20">
         <div className="max-w-7xl mx-auto px-6">
@@ -192,25 +218,25 @@ export default function HomePage() {
                 id: "5",
                 file: "product_5.png",
                 name: "Teal Ajrakh 3-Piece",
-                price: 1999,
+                price: 1998,
               },
               {
                 id: "6",
                 file: "product_6.png",
                 name: "Black Paisley Coord",
-                price: 2100,
+                price: 2198,
               },
               {
                 id: "7",
                 file: "product_7.png",
                 name: "Teal Embroidered Set",
-                price: 1999,
+                price: 1998,
               },
               {
                 id: "10",
                 file: "product_10.png",
                 name: "Rust Appliqué Set",
-                price: 1999,
+                price: 1998,
               },
             ].map((p) => (
               <Link href={`/shop/${p.id}`} key={p.id} className="group block">
@@ -222,9 +248,13 @@ export default function HomePage() {
                     className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <div className="mt-3">
-                  <h3 className="font-serif text-sm text-charcoal">{p.name}</h3>
-                  <p className="text-sm text-gold mt-1">₹{p.price}</p>
+                <div className="mt-1">
+                  <p className="text-xs text-gray-400 line-through">
+                    ₹{p.price}
+                  </p>
+                  <p className="text-gold font-bold">
+                    ₹{Math.round(p.price * 0.5)}
+                  </p>
                 </div>
               </Link>
             ))}
