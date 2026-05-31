@@ -42,7 +42,7 @@ export default function ProductDetailPage() {
       id: product.id,
       name: product.name,
       price: product.price,
-      img: `/products/${product.file}`,
+      img: product.file,
       size: selectedSize,
       qty,
     });
@@ -59,7 +59,7 @@ export default function ProductDetailPage() {
       id: product.id,
       name: product.name,
       price: product.price,
-      img: `/products/${product.file}`,
+      img: product.file,
       size: selectedSize,
       qty,
     });
