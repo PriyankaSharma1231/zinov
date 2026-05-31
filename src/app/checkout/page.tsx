@@ -78,7 +78,7 @@ export default function CheckoutPage() {
   const [paySuccess, setPaySuccess] = useState(false);
 
   const subtotalINR = subtotal;
-  const shipping = subtotalINR >= 999 ? 0 : 99;
+  const shipping = 0;
   const total = subtotalINR + shipping;
 
   // ── Remove item handler ──
@@ -335,18 +335,7 @@ export default function CheckoutPage() {
                   }
                   className="w-full border border-charcoal/20 rounded-sm px-4 py-2.5 text-sm text-charcoal bg-cream outline-none focus:border-gold"
                 >
-                  {[
-                    "Gujarat",
-                    "Maharashtra",
-                    "Rajasthan",
-                    "Delhi",
-                    "Karnataka",
-                    "Tamil Nadu",
-                    "Uttar Pradesh",
-                    "West Bengal",
-                    "Madhya Pradesh",
-                    "Punjab",
-                  ].map((s) => (
+                  {["Gujarat"].map((s) => (
                     <option key={s}>{s}</option>
                   ))}
                 </select>
@@ -520,20 +509,14 @@ export default function CheckoutPage() {
                 </div>
                 <div className="flex justify-between text-charcoal/70">
                   <span>Shipping</span>
-                  <span>
-                    {shipping === 0 ? (
-                      <span className="text-gold font-medium">Free</span>
-                    ) : (
-                      `₹${shipping}`
-                    )}
-                  </span>
+                  <span className="text-gold font-medium">Free</span>
                 </div>
-                {shipping > 0 && (
+                {/* {shipping > 0 && (
                   <p className="text-xs text-muted">
                     Add ₹{(999 - subtotalINR).toLocaleString("en-IN")} more for
                     free shipping
                   </p>
-                )}
+                )} */}
                 <div className="border-t border-sand pt-2.5 mt-1 flex justify-between font-medium text-charcoal text-base">
                   <span className="font-serif">Total</span>
                   <span className="font-serif text-lg">

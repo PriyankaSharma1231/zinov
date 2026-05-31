@@ -24,7 +24,7 @@ export default function CartPage() {
     );
   }
 
-  const shipping = subtotal >= 999 ? 0 : 99;
+  const shipping = 0;
   const total = subtotal + shipping;
 
   return (
@@ -123,24 +123,18 @@ export default function CartPage() {
                 <div className="flex justify-between text-charcoal/70">
                   <span>₹{subtotal.toLocaleString("en-IN")}</span>
                   <p className="text-xs text-muted">
-                    Free shipping on orders over ₹999
+                    Free shipping
                   </p>
                 </div>
                 <div className="flex justify-between text-charcoal/70">
                   <span>Shipping</span>
-                  <span>
-                    {shipping === 0 ? (
-                      <span className="text-gold">Free</span>
-                    ) : (
-                      `₹${shipping}`
-                    )}
-                  </span>
+                  <span className="text-gold font-medium">Free</span>
                 </div>
-                {shipping > 0 && (
+                {/* {shipping > 0 && (
                   <p className="text-xs text-muted">
                     Free shipping on orders over ₹150
                   </p>
-                )}
+                )} */}
                 <div className="border-t border-sand pt-3 flex justify-between font-medium text-charcoal text-base">
                   <span>Total</span>
                   <span>₹{total.toLocaleString("en-IN")}</span>
