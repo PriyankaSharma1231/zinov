@@ -511,12 +511,7 @@ export default function CheckoutPage() {
                   <span>Shipping</span>
                   <span className="text-gold font-medium">Free</span>
                 </div>
-                {/* {shipping > 0 && (
-                  <p className="text-xs text-muted">
-                    Add ₹{(999 - subtotalINR).toLocaleString("en-IN")} more for
-                    free shipping
-                  </p>
-                )} */}
+               
                 <div className="border-t border-sand pt-2.5 mt-1 flex justify-between font-medium text-charcoal text-base">
                   <span className="font-serif">Total</span>
                   <span className="font-serif text-lg">
