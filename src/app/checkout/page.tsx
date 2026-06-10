@@ -4,7 +4,14 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
-import { Shield, Lock, Smartphone, CheckCircle, Trash2 } from "lucide-react";
+import {
+  Shield,
+  Lock,
+  Smartphone,
+  CheckCircle,
+  Trash2,
+  Banknote,
+} from "lucide-react";
 
 type FormData = {
   firstName: string;
@@ -62,7 +69,9 @@ export default function CheckoutPage() {
   const { cart, subtotal, clearCart, removeFromCart } = useCart();
   const router = useRouter();
   const [removingId, setRemovingId] = useState<string | null>(null);
-
+  const [paymentMethod, setPaymentMethod] = useState<"online" | "cod">(
+    "online",
+  );
   const [form, setForm] = useState<FormData>({
     firstName: "",
     lastName: "",
@@ -75,13 +84,11 @@ export default function CheckoutPage() {
   });
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [paySuccess, setPaySuccess] = useState(false);
 
   const subtotalINR = subtotal;
   const shipping = 0;
   const total = subtotalINR + shipping;
 
-  // ── Remove item handler ──
   const handleRemoveItem = (id: string, size: string) => {
     const key = `${id}-${size}`;
     setRemovingId(key);
@@ -142,22 +149,6 @@ export default function CheckoutPage() {
 
     setLoading(true);
 
-    // Send notification email when customer initiates payment
-    await fetch("/api/send-order-email", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        customerName: `${form.firstName} ${form.lastName}`,
-        email: form.email,
-        phone: form.phone,
-        address: `${form.address}, ${form.city}, ${form.state} - ${form.pincode}`,
-        total: total,
-        paymentId: "PENDING",
-        items: cart,
-      }),
-    });
-
-    // Step 1 — Create order on server
     const orderRes = await fetch("/api/razorpay", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -172,7 +163,6 @@ export default function CheckoutPage() {
 
     const order = await orderRes.json();
 
-    // Step 2 — Load Razorpay SDK
     const loaded = await loadRazorpayScript();
     if (!loaded) {
       alert("Payment gateway failed to load. Check your internet connection.");
@@ -180,7 +170,6 @@ export default function CheckoutPage() {
       return;
     }
 
-    // Step 3 — Open Razorpay checkout
     const options = {
       key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
       amount: order.amount,
@@ -211,7 +200,6 @@ export default function CheckoutPage() {
         },
       },
       handler: async function (response: any) {
-        // Send confirmed payment email
         await fetch("/api/send-order-email", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -220,14 +208,14 @@ export default function CheckoutPage() {
             email: form.email,
             phone: form.phone,
             address: `${form.address}, ${form.city}, ${form.state} - ${form.pincode}`,
-            total: total,
+            total,
+            paymentMethod: "Online Payment",
             paymentId: response.razorpay_payment_id,
             items: cart,
             subtotal: subtotalINR,
-            shipping: shipping,
+            shipping,
           }),
         });
-        setPaySuccess(true);
         clearCart();
         router.push(
           `/order-success?ref=ZNV-${Date.now().toString().slice(-6)}&total=${total}&email=${form.email}&payment_id=${response.razorpay_payment_id}`,
@@ -248,6 +236,51 @@ export default function CheckoutPage() {
   const handleChange = (name: keyof FormData, val: string) => {
     setForm((prev) => ({ ...prev, [name]: val }));
     setErrors((prev) => ({ ...prev, [name]: "" }));
+  };
+
+  const handleCODOrder = async () => {
+    const e = validate();
+    if (Object.keys(e).length > 0) {
+      setErrors(e);
+      return;
+    }
+
+    setLoading(true);
+    const orderRef = `ZNV-COD-${Date.now()}`;
+
+    try {
+      const res = await fetch("/api/send-order-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          customerName: `${form.firstName} ${form.lastName}`,
+          email: form.email,
+          phone: form.phone,
+          address: `${form.address}, ${form.city}, ${form.state} - ${form.pincode}`,
+          total,
+          paymentMethod: "Cash on Delivery",
+          paymentId: "COD",
+          orderRef,
+          items: cart,
+          subtotal: subtotalINR,
+          shipping,
+        }),
+      });
+      const result = await res.json(); // ← add this
+      console.log("Email API response:", result);
+      if (!res.ok) {
+        throw new Error("Email API failed");
+      }
+
+      clearCart();
+      router.push(
+        `/order-success?ref=${orderRef}&total=${total}&email=${form.email}&payment_method=COD`,
+      );
+    } catch (error) {
+      alert("Failed to place order. Please try again.");
+    }
+
+    setLoading(false);
   };
 
   return (
@@ -342,34 +375,127 @@ export default function CheckoutPage() {
               </div>
             </div>
 
-            {/* Payment methods */}
-            <div className="mt-8 border border-sand rounded-sm overflow-hidden">
-              <div className="bg-charcoal px-4 py-3 flex items-center gap-2">
-                <Lock size={14} className="text-gold" />
-                <span className="text-xs uppercase tracking-widest text-cream">
-                  Secure Payment via Razorpay
-                </span>
-              </div>
-              <div className="p-4 grid grid-cols-4 gap-3">
-                {[
-                  { icon: "📱", label: "UPI", sub: "GPay · PhonePe · Paytm" },
-                  { icon: "💳", label: "Card", sub: "Visa · Mastercard" },
-                  { icon: "🏦", label: "Net Banking", sub: "All major banks" },
-                  { icon: "👛", label: "Wallets", sub: "Paytm · Mobikwik" },
-                ].map((m) => (
-                  <div
-                    key={m.label}
-                    className="text-center p-2 border border-sand rounded-sm bg-cream/50"
-                  >
-                    <div className="text-xl mb-1">{m.icon}</div>
-                    <div className="text-xs font-medium text-charcoal">
-                      {m.label}
-                    </div>
-                    <div className="text-xs text-muted mt-0.5 leading-tight">
-                      {m.sub}
+            {/* ── Payment Method Selection ── */}
+            <div className="mt-8">
+              <p className="text-xs uppercase tracking-widest text-charcoal/60 mb-3">
+                Payment Method
+              </p>
+
+              <div className="flex flex-col gap-3">
+                {/* Online Payment Option */}
+                <button
+                  type="button"
+                  onClick={() => setPaymentMethod("online")}
+                  className={`w-full text-left border rounded-sm transition-colors ${
+                    paymentMethod === "online"
+                      ? "border-gold bg-gold/5"
+                      : "border-sand bg-white/40 hover:border-charcoal/30"
+                  }`}
+                >
+                  {/* Header row */}
+                  <div className="flex items-center gap-3 px-4 py-3">
+                    <span
+                      className={`w-4 h-4 rounded-full border-2 flex-shrink-0 flex items-center justify-center ${
+                        paymentMethod === "online"
+                          ? "border-gold"
+                          : "border-charcoal/30"
+                      }`}
+                    >
+                      {paymentMethod === "online" && (
+                        <span className="w-2 h-2 rounded-full bg-gold block" />
+                      )}
+                    </span>
+                    <Lock size={14} className="text-gold flex-shrink-0" />
+                    <div>
+                      <p className="text-sm font-medium text-charcoal">
+                        Pay Online
+                      </p>
+                      <p className="text-xs text-muted">
+                        UPI · Card · Net Banking · Wallets
+                      </p>
                     </div>
                   </div>
-                ))}
+
+                  {/* Expanded payment icons — only show when selected */}
+                  {paymentMethod === "online" && (
+                    <div className="px-4 pb-4 grid grid-cols-4 gap-3 border-t border-gold/20 pt-3">
+                      {[
+                        {
+                          icon: "📱",
+                          label: "UPI",
+                          sub: "GPay · PhonePe · Paytm",
+                        },
+                        { icon: "💳", label: "Card", sub: "Visa · Mastercard" },
+                        {
+                          icon: "🏦",
+                          label: "Net Banking",
+                          sub: "All major banks",
+                        },
+                        {
+                          icon: "👛",
+                          label: "Wallets",
+                          sub: "Paytm · Mobikwik",
+                        },
+                      ].map((m) => (
+                        <div
+                          key={m.label}
+                          className="text-center p-2 border border-sand rounded-sm bg-cream/50"
+                        >
+                          <div className="text-xl mb-1">{m.icon}</div>
+                          <div className="text-xs font-medium text-charcoal">
+                            {m.label}
+                          </div>
+                          <div className="text-xs text-muted mt-0.5 leading-tight">
+                            {m.sub}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </button>
+
+                {/* Cash on Delivery Option */}
+                <button
+                  type="button"
+                  onClick={() => setPaymentMethod("cod")}
+                  className={`w-full text-left border rounded-sm transition-colors ${
+                    paymentMethod === "cod"
+                      ? "border-gold bg-gold/5"
+                      : "border-sand bg-white/40 hover:border-charcoal/30"
+                  }`}
+                >
+                  <div className="flex items-center gap-3 px-4 py-3">
+                    <span
+                      className={`w-4 h-4 rounded-full border-2 flex-shrink-0 flex items-center justify-center ${
+                        paymentMethod === "cod"
+                          ? "border-gold"
+                          : "border-charcoal/30"
+                      }`}
+                    >
+                      {paymentMethod === "cod" && (
+                        <span className="w-2 h-2 rounded-full bg-gold block" />
+                      )}
+                    </span>
+                    <Banknote size={14} className="text-gold flex-shrink-0" />
+                    <div>
+                      <p className="text-sm font-medium text-charcoal">
+                        Cash on Delivery
+                      </p>
+                      <p className="text-xs text-muted">
+                        Pay in cash when your order arrives
+                      </p>
+                    </div>
+                  </div>
+
+                  {paymentMethod === "cod" && (
+                    <div className="px-4 pb-4 border-t border-gold/20 pt-3">
+                      <p className="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-sm px-3 py-2">
+                        💡 Please keep the exact amount ready at the time of
+                        delivery.
+                      </p>
+                    </div>
+                  )}
+                </button>
               </div>
             </div>
 
@@ -398,7 +524,13 @@ export default function CheckoutPage() {
 
             {/* Pay button */}
             <button
-              onClick={handlePayment}
+              onClick={() => {
+                if (paymentMethod === "cod") {
+                  handleCODOrder();
+                } else {
+                  handlePayment();
+                }
+              }}
               disabled={loading}
               className="btn-gold w-full text-center text-sm uppercase tracking-widest text-white px-6 py-4 rounded-sm mt-6 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
@@ -407,10 +539,15 @@ export default function CheckoutPage() {
                   <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
                   Processing...
                 </>
+              ) : paymentMethod === "cod" ? (
+                <>
+                  <Banknote size={16} />
+                  Place Order — Pay ₹{total.toLocaleString("en-IN")} on Delivery
+                </>
               ) : (
                 <>
-                  <Smartphone size={16} /> Pay ₹{total.toLocaleString("en-IN")}{" "}
-                  via UPI / Card
+                  <Smartphone size={16} />
+                  Pay ₹{total.toLocaleString("en-IN")} via UPI / Card
                 </>
               )}
             </button>
@@ -443,7 +580,6 @@ export default function CheckoutPage() {
                         : "opacity-100 scale-100"
                     }`}
                   >
-                    {/* Product image */}
                     <div className="relative w-16 h-20 flex-shrink-0 rounded-sm overflow-hidden bg-sand">
                       <Image
                         src={item.img}
@@ -456,7 +592,6 @@ export default function CheckoutPage() {
                       </span>
                     </div>
 
-                    {/* Item details */}
                     <div className="flex-1 min-w-0">
                       <p className="text-sm text-charcoal font-medium truncate">
                         {item.name}
@@ -472,7 +607,6 @@ export default function CheckoutPage() {
                       </p>
                     </div>
 
-                    {/* Price + Remove button */}
                     <div className="flex flex-col items-end gap-2 flex-shrink-0">
                       <p className="text-sm text-charcoal font-medium">
                         ₹
@@ -511,7 +645,6 @@ export default function CheckoutPage() {
                   <span>Shipping</span>
                   <span className="text-gold font-medium">Free</span>
                 </div>
-               
                 <div className="border-t border-sand pt-2.5 mt-1 flex justify-between font-medium text-charcoal text-base">
                   <span className="font-serif">Total</span>
                   <span className="font-serif text-lg">

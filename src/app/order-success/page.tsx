@@ -39,9 +39,9 @@ export default function OrderSuccessPage() {
         {/* Delivery info */}
         <div className="mt-10 grid grid-cols-3 gap-4 text-center">
           {[
-            { label: 'Processing', value: '1–2 days' },
-            { label: 'Dispatch', value: '3–5 days' },
-            { label: 'Delivery', value: '7–10 days' },
+            { label: 'Processing', value: '1 day' },
+            { label: 'Dispatch', value: '1 day' },
+            { label: 'Delivery', value: '1 day' },
           ].map(item => (
             <div key={item.label} className="bg-sand/40 border border-sand rounded-sm p-4">
               <p className="font-medium text-charcoal text-sm">{item.value}</p>
