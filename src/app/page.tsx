@@ -1,10 +1,112 @@
 "use client";
 // src/app/page.tsx
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useLang } from "@/lib/language-context";
 import RangoliDecor from "@/components/ui/RangoliDecor";
+
+function PromoPopup() {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    // Only show if never seen before
+
+    const seen = localStorage.getItem("zinov_promo_seen");
+    if (!seen) {
+      const timer = setTimeout(() => setShow(true), 1500);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  const handleClose = () => {
+    localStorage.setItem("zinov_promo_seen", "true");
+    setShow(false);
+  };
+
+  if (!show) return null;
+
+  return (
+    <div className="fixed inset-0 z-[999] flex items-center justify-center px-4">
+      {/* Backdrop */}
+      <div
+        className="absolute inset-0 bg-charcoal/70 backdrop-blur-sm"
+        onClick={handleClose}
+      />
+
+      {/* Popup */}
+      <div className="relative z-10 bg-cream max-w-md w-full rounded-sm overflow-hidden shadow-2xl animate-fade-up">
+        {/* Top gold strip */}
+        <div className="bg-gold h-2 w-full" />
+
+        {/* Close button */}
+        <button
+          onClick={handleClose}
+          className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center text-charcoal/50 hover:text-charcoal transition-colors text-xl font-light"
+        >
+          ✕
+        </button>
+
+        {/* Content */}
+        <div className="px-8 py-10 text-center">
+          {/* Rangoli */}
+          <div className="text-3xl mb-2">✦</div>
+
+          {/* Brand */}
+          <p className="font-serif text-2xl font-bold text-charcoal tracking-widest mb-1">
+            ZINOV
+          </p>
+          <p className="text-xs text-gold tracking-[0.2em] uppercase mb-6">
+            Crafted in India
+          </p>
+
+          {/* Offer badge */}
+          <div className="bg-charcoal rounded-sm py-6 px-6 mb-6 relative">
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-red-600 text-white text-xs font-bold px-4 py-1 rounded-full">
+              🎉 LIMITED TIME
+            </div>
+            <p className="text-gold font-serif text-6xl font-bold leading-none">
+              50%
+            </p>
+            <p className="text-cream text-lg font-medium tracking-widest mt-1">
+              OFF
+            </p>
+            <p className="text-cream/60 text-xs mt-2 tracking-wider">
+              on your first order
+            </p>
+          </div>
+
+          {/* Code */}
+
+          {/* Features */}
+          <div className="flex justify-center gap-6 mb-6 text-xs text-muted">
+            <span>✦ 100% Cotton Flax</span>
+            <span>✦ Free Delivery in one Day</span>
+            <span>✦ 1 Day</span>
+          </div>
+
+          {/* CTA */}
+          <Link
+            href="/shop"
+            onClick={handleClose}
+            className="btn-gold block w-full text-white py-4 text-xs uppercase tracking-widest rounded-sm text-center"
+          >
+            Shop Now
+          </Link>
+
+          {/* Skip */}
+          <button
+            onClick={handleClose}
+            className="mt-4 text-xs text-muted hover:text-charcoal transition-colors underline"
+          ></button>
+        </div>
+
+        {/* Bottom gold strip */}
+        <div className="bg-gold h-1 w-full" />
+      </div>
+    </div>
+  );
+}
 
 const featured = [
   {
@@ -46,6 +148,7 @@ export default function HomePage() {
 
   return (
     <div className="bg-cream min-h-screen">
+      <PromoPopup />
       {/* HERO */}
       <section className="relative h-screen flex items-end overflow-hidden">
         <div className="absolute inset-0">
